@@ -2,6 +2,17 @@ Book project for ASP.NET Core in Action, Third Edition
 ==============================
 This repository contains the code samples for *ASP.NET Core in Action, Third Edition*
 
+> **Warning**
+> For clarity, this repository uses project names with long names. 
+> This can sometimes cause problems building the samples on Windows if you checkout the repository to a long path, with errors similar to
+> ```bash
+> Error MSB4018: The "GenerateStaticWebAsssetsPropsFile" task failed unexpectedly
+> System.IO.DirectoryNotFoundException: Could not find a part of the path
+> ...
+> ```
+>  Where possible, checkout the repository to a short path, e.g. `C:\repos\asp-dot-net-core-in-action-3e`. 
+> 
+
 ## Chapter 1
 *No code samples*
 
@@ -25,7 +36,7 @@ This repository contains the code samples for *ASP.NET Core in Action, Third Edi
 * *BasicRoutingMinimalApi* - 5.2.1 Extracting values from the URL with routing
 * *MultipleVerbMinimalApi* - 5.2.3 Defining route handlers with functions
 * *MultipleVerbMinimalApiWithStatusCodes* - 5.3.1 Returning status codes with Results and TypedResults
-* *MultipleVerbMinimalApiWithProblemDetails* - 5.3.2 Returning useful errors with ProblemDetails
+* *MultipleVerbMinimalApiWithAutoProblemDetails* - 5.3.2 Returning useful errors with ProblemDetails
 * *MinimalApiWithAutoProblemDetails* - 5.3.3 Converting all your responses to Problem Details
 * *MinimalApiFilters* - 5.4 Running common code with endpoint filters
 * *MinimalApiRouteGroups* - 5.5 Organizing your APIs with route groups
@@ -114,7 +125,7 @@ This repository contains the code samples for *ASP.NET Core in Action, Third Edi
 ## [Chapter 20](https://github.com/andrewlock/asp-dot-net-core-in-action-3e/tree/main/Chapter20)
 * *DefaultWebApiProject* - The default Web API project, created using the Visual Studio API template, as in section 20.2.
 * *BasicWebApiProject* - A basic Web API project, returning a list of fruit, as demonstrated in section 20.2.
-* *UsingApiControllerAttribute* - A project containing 2 controllers, demonstrating the additional code required if you don't use the `[ApiController]` attribute, as in section 20.5.
+* *ApiControllerAttribute* - A project containing 2 controllers, demonstrating the additional code required if you don't use the `[ApiController]` attribute, as in section 20.5.
 * *ProblemDetailsExample* - A simple API controller that demonstrates automatically returning a `ValidationProblemDetails` object when the binding model (the `myValue` route parameter) is empty.
 * *CarsWebApi* - A Web API controller that demonstrates generating various different response types. Is configured to allow XML output in Program.cs Use Swagger UI to make requests to the API and view the XML response. Also configured to use the _Newtonsoft.Json_ formatter instead of the _System.Text.Json_ formatter.
 
@@ -130,17 +141,17 @@ This repository contains the code samples for *ASP.NET Core in Action, Third Edi
 ## [Chapter 23](https://github.com/andrewlock/asp-dot-net-core-in-action-3e/tree/main/Chapter14)
 * *DefaultTemplate* - The default web app template for ASP.NET Core with Authentication, as discussed in section 23.3. Examples using LocalDB (created through Visual Studio) and using SQLite (created using `dotnet new webapp --auth Individual`)
 * *RecipeApplication* - The starting point "existing" recipe application, as described in section 23.4.
-* *RecipeApplication_WithIdentity* - The recipe application with authentication added, as described in section 23.4. Also, the register page has been scaffolded to remove the references to external services, as described in section 23.5.
-* *RecipeApplication_WithNameClaim* - The recipe application with an additional field added to the `RegisterModel` to record the `FullName`, as described in section 23.6. The field is added as an extra claim when the user registers, and is displayed in the menu bar when a user logs in.
+* *RecipeApp_Identity* - The recipe application with authentication added, as described in section 23.4. Also, the register page has been scaffolded to remove the references to external services, as described in section 23.5.
+* *RecipeApp_NameClaim* - The recipe application with an additional field added to the `RegisterModel` to record the `FullName`, as described in section 23.6. The field is added as an extra claim when the user registers, and is displayed in the menu bar when a user logs in.
 
 ## [Chapter 24](https://github.com/andrewlock/asp-dot-net-core-in-action-3e/tree/main/Chapter24)
 * *Airport* - An analogy to the airport example presented in section 24.1. There are 4 steps, Home Page, Through security, Enter airport lounge, Board the plane. You can set the claims for a user when you register. Which claims you add will determine how far through the airport you can get.
-* *RecipeApplication* - The *RecipeApplication_WithIdentity* from chapter 23, with authorization to prevent unauthorized users creating recipes, and resource based authorization to ensure only the user which created a recipe can edit it.
+* *RecipeApplication* - The *RecipeApp_Identity* from chapter 23, with authorization to prevent unauthorized users creating recipes, and resource based authorization to ensure only the user which created a recipe can edit it.
 
 ## [Chapter 25](https://github.com/andrewlock/asp-dot-net-core-in-action-3e/tree/main/Chapter25)
-* *RecipeApi_WithAuthentication* - The recipe API from chapter 12, with added authentication, as described in section 25.3.
-* *RecipeApi_SwaggerAuth* - Extending the recipe API to describe the authorization requirement for OpenAPI and Swagger UI, as described in section 25.5.
-* *RecipeApi_WithAuthorizationPolicies* - Adding additional authorization policies to the CreateRecipe API and management APIs, as described in section 25.6. An endpoint filter is used to apply resource-based authorization to multiple endpoints.
+* *RecipeApi_Auth* - The recipe API from chapter 12, with added authentication, as described in section 25.3.
+* *RecipeApi_Swagger* - Extending the recipe API to describe the authorization requirement for OpenAPI and Swagger UI, as described in section 25.5.
+* *RecipeApi_Authorization* - Adding additional authorization policies to the CreateRecipe API and management APIs, as described in section 25.6. An endpoint filter is used to apply resource-based authorization to multiple endpoints.
 
 ## [Chapter 26](https://github.com/andrewlock/asp-dot-net-core-in-action-3e/tree/main/Chapter26)
 * *RecipeApplication* - The recipe application from previous chapters with some additional logging added to some Razor Pages.
@@ -148,8 +159,8 @@ This repository contains the code samples for *ASP.NET Core in Action, Third Edi
 * *LogFiltering* - A simple minimal API Project configured to use the configuration filters defined in section 26.4.
 * *SeqLogger* - A simple minimal API project to demonstrate structured logging using Seq, and using scopes to add additional properties to a log, as shown in section 26.5.
 
-## [Chapter 27](https://github.com/andrewlock/asp-dot-net-core-in-action-3e/tree/main/Chapter27)
-* *RecipeApplication* - The Recipe application from previous chapters, updated to demonstrate bundling. Added additional JS and CSS files to demonstrate bundling and minifying, and added *bundleconfig.json*
+## Chapter 27
+*No code samples*
 
 ## [Chapter 28](https://github.com/andrewlock/asp-dot-net-core-in-action-3e/tree/main/Chapter28)
 * *CustomHttpsCertificate* - A basic Razor Pages app using Kestrel with a self-signed certificate, similar to the way you would configure a certificate in production. Shows configuring the default certificate used by Kestrel in _appsettings.json_.
@@ -197,3 +208,10 @@ You can generate a certificate on Ubuntu using *install_certificate.sh*. This us
 * *WindowsService* - A generic `Host` to download exchange rates, configured to execute as a Windows Service, as described in section 34.2.
 * *QuartzHostedService* - A generic `Host` that uses Quartz.NET to run background tasks
 * *QuartzClustering* - A generic `Host` that uses Quartz.NET to run background tasks configured to use clustering. Note that SQLite is not supported for clustering, so this application uses LocalDB
+
+## [Chapter 35](https://github.com/andrewlock/asp-dot-net-core-in-action-3e/tree/main/Chapter35)
+* *ExchangeRates* - A basic exchange rate application. Includes unit tests for the `CurrencyConverter` class.
+
+## [Chapter 36](https://github.com/andrewlock/asp-dot-net-core-in-action-3e/tree/main/Chapter36)
+* *ExchangeRates* - The basic exchange rate application from 35.2. Includes unit tests for the `CurrencyConverter` class (chapter 35), for the `StatusMiddleware` (section 36.1), for API controllers and minimal API endpoints (section 36.2). It also includes "Test Host" integration tests for the `StatusMiddleware` (section 36.3.1) as well as `WebApplicationFactory`-based integration tests for the whole app (section 36.3.2, 36.3.3, 36.3.4).
+* *RecipeApplication* - Testing a service that relies on an EF Core `DbContext`, as described in section 36.4. The `RecipeServiceTests` class shows how you can test the `RecipeService` using the in-memory SQLite provider. Also shows a custom `WebApplicationFactory` implementation that uses an in-memory database.
