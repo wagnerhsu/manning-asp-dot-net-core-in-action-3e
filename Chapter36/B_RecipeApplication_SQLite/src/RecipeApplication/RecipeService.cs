@@ -7,6 +7,7 @@ namespace RecipeApplication
     public class RecipeService
     {
         readonly AppDbContext _context;
+
         public RecipeService(AppDbContext context)
         {
             _context = context;
@@ -52,11 +53,11 @@ namespace RecipeApplication
                     Method = x.Method,
                     LastModified = x.LastModified,
                     Ingredients = x.Ingredients
-                    .Select(item => new RecipeDetailViewModel.Item
-                    {
-                        Name = item.Name,
-                        Quantity = $"{item.Quantity} {item.Unit}"
-                    })
+                        .Select(item => new RecipeDetailViewModel.Item
+                        {
+                            Name = item.Name,
+                            Quantity = $"{item.Quantity} {item.Unit}"
+                        })
                 })
                 .SingleOrDefaultAsync();
         }
@@ -101,6 +102,7 @@ namespace RecipeApplication
         {
             var recipe = await _context.Recipes.FindAsync(cmd.Id);
             if (recipe == null) { throw new Exception("Unable to find the recipe"); }
+
             if (recipe.IsDeleted) { throw new Exception("Unable to update a deleted recipe"); }
 
             cmd.UpdateRecipe(recipe);

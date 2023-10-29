@@ -20,7 +20,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IAuthorizationHandler, IsRecipeOwnerHandler>();
 builder.Services.AddAuthorizationBuilder()
-    .AddPolicy("CanManageRecipe", policyBuilder => 
+    .AddPolicy("CanManageRecipe", policyBuilder =>
         policyBuilder.AddRequirements(new IsRecipeOwnerRequirement()));
 
 var app = builder.Build();
