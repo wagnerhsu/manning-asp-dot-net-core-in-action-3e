@@ -25,7 +25,11 @@ app.MapGet("/unbindable", (IOptions<UnbindableOptions> options) => options.Value
 app.MapGet("/", () => @"Try visiting /bindable and /unbindable.
 The options in /bindable have successfully bound to the configuration values
 The options in /unbindable have their default values as they failed to bind");
-
+app.MapGet("boolean", (IConfiguration configuration) =>
+{
+    // Example of using a boolean value in the options
+    return new { TestFlag = configuration.GetValue<bool>("TestFlag") };
+});
 app.Run();
 
 
