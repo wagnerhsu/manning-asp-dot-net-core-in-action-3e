@@ -9,20 +9,24 @@ namespace ExchangeRateViewer
     public class ExchangeRatesClient
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger<ExchangeRatesClient> _logger;
+
         private readonly JsonSerializerOptions _serializerOptions = new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
 
-        public ExchangeRatesClient(HttpClient httpClient)
+        public ExchangeRatesClient(HttpClient httpClient, ILogger<ExchangeRatesClient> logger)
         {
             _httpClient = httpClient;
+            _logger = logger;
             _httpClient.BaseAddress = new Uri("https://open.er-api.com/v6/");
             _httpClient.DefaultRequestHeaders.Add(HeaderNames.UserAgent, "ExchangeRateViewer");
         }
 
         public async Task<ExchangeRates> GetLatestRatesAsync()
         {
+            _logger.LogInformation(nameof(GetLatestRatesAsync));
             var result = await _httpClient.GetAsync("latest");
             result.EnsureSuccessStatusCode();
 
